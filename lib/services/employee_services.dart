@@ -2,7 +2,7 @@
 import '../networking/constant.dart';
 import '../support/dio_helper.dart';
 
-class EmployeeServices {
+class AlloraServices {
 
   static Future getAllEmployees() async {
     try {
@@ -13,5 +13,17 @@ class EmployeeServices {
       rethrow;
     }
   }
+  static Future getAllClients() async{
+    try{
+      var dio = await DioHelper.getInstance();
+      var response = await dio.get('$baseUrl/admin/clients');
+      return response.data;
+    }catch (e){
+      rethrow;
+    }
+
+
+  }
+
 
 }

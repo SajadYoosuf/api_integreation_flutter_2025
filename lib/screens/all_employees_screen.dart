@@ -3,62 +3,49 @@ import 'package:api_integreation_beginner_2025/support/logger.dart';
 import 'package:api_integreation_beginner_2025/services/employee_services.dart';
 import 'package:flutter/material.dart';
 
-class AllEmployeesScreen extends StatefulWidget {
-  const AllEmployeesScreen({super.key});
+class AllclientsScreen extends StatefulWidget {
+  const AllclientsScreen({super.key});
 
   @override
-  State<AllEmployeesScreen> createState() => _AllEmployeesScreenState();
+  State<AllclientsScreen> createState() => _AllclientsScreenState();
 }
 
-class _AllEmployeesScreenState extends State<AllEmployeesScreen> {
-  bool isLoading = true;
-  bool isError = false;
-  Map<String, dynamic>? employees;
-  Future<void> getAllEmployees() async {
-    try {
-      final data = await EmployeeServices.getAllEmployees();
+class _AllclientsScreenState extends State<AllclientsScreen> {
+  bool _isLoading = true;
+  var clients;
+  Future<void> getAllClients() async {
+
+      final data = await AlloraServices.getAllClients();
 
       setState(() {
-        employees = data;
-        isLoading = false;
+        clients = data;
       });
-    } catch (e) {
-      setState(() {
-        isLoading = false;
-        isError = true;
-      });
-    }
 
-    log.i(employees);
+
+    log.i(clients);
   }
 
   @override
   void initState() {
     super.initState();
-    // Schedule a callback to run after the first frame is rendered.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getAllEmployees();
-    });
+      _initLoad();
   }
+  Future<void> _initLoad() async{
+    Future.wait([getAllClients()]);
+      _isLoading=false;
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isLoading
+      body: _isLoading
           ? Center(child: CircularProgressIndicator())
-          : isError
-          ? Center(
-            child: Container(
-                width: 30,
-                height: 50,
-                child: Text("employee loading getting error"),
-              ),
-          )
           : Center(
             child: Container(
                 child: Column(
                   children: [
-                    Text(employees!['data']['employees'][0]['user']['firstName']),
+                    Text(clients!['data']['clients'][0]['user']['firstName']),
                   ],
                 ),
               ),
