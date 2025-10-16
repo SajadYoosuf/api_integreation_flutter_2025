@@ -1,28 +1,28 @@
 import 'dart:convert';
 import 'package:api_integreation_beginner_2025/support/logger.dart';
-import 'package:api_integreation_beginner_2025/services/employee_services.dart';
+import 'package:api_integreation_beginner_2025/services/allora_services.dart';
 import 'package:flutter/material.dart';
 
-class AllclientsScreen extends StatefulWidget {
-  const AllclientsScreen({super.key});
+class AllemployeesScreen extends StatefulWidget {
+  const AllemployeesScreen({super.key});
 
   @override
-  State<AllclientsScreen> createState() => _AllclientsScreenState();
+  State<AllemployeesScreen> createState() => _AllemployeesScreenState();
 }
 
-class _AllclientsScreenState extends State<AllclientsScreen> {
+class _AllemployeesScreenState extends State<AllemployeesScreen> {
   bool _isLoading = true;
-  var clients;
-  Future<void> getAllClients() async {
+  var employees;
+  Future<void> getAllemployees() async {
 
-      final data = await AlloraServices.getAllClients();
+      final data = await AlloraServices.getAllEmployees();
 
       setState(() {
-        clients = data;
+        employees = data;
       });
 
 
-    log.i(clients);
+    log.i(employees);
   }
 
   @override
@@ -30,8 +30,10 @@ class _AllclientsScreenState extends State<AllclientsScreen> {
     super.initState();
       _initLoad();
   }
+
+
   Future<void> _initLoad() async{
-    Future.wait([getAllClients()]);
+    Future.wait([getAllemployees()]);
       _isLoading=false;
   }
 
@@ -45,7 +47,7 @@ class _AllclientsScreenState extends State<AllclientsScreen> {
             child: Container(
                 child: Column(
                   children: [
-                    Text(clients!['data']['clients'][0]['user']['firstName']),
+                    Text(employees!['data']['employees'][0]['user']['firstName']),
                   ],
                 ),
               ),

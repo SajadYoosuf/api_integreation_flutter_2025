@@ -1,3 +1,4 @@
+import 'package:api_integreation_beginner_2025/networking/constant.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,8 +10,8 @@ class DioHelper {
     String token = (prefs.getString('token') ?? "");
     log.i(token);
     Dio dio = new Dio();
-    dio.options.headers["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTEwMzlmOTFmZmM2MmRkZGE2Mzk1MiIsImlhdCI6MTc2MDM1MDYwNCwiZXhwIjoxNzY4MTI2NjA0fQ.-L310Ix95kGEzBezqSuDIpcTcLPoaSwVwvD8XtZaW-Y';
-    dio.options.headers["Accept"] = "application/json";
+    dio.options.headers["x-rapidapi-key"] = 'fa1e134807msh7db3c185f348abbp166e6cjsn96c33a712066';
+    dio.options.headers["x-rapidapi-host"] = "real-time-news-data.p.rapidapi.com";
     // dio.options.headers['']
     dio.interceptors.add(
       InterceptorsWrapper(
