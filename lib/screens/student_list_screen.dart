@@ -39,7 +39,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
 
   Future<void> _initLoad() async{
     Future.wait([StudentDetails()]);
-    _isLoading=false;
+     _isLoading=false;
   }
 
 

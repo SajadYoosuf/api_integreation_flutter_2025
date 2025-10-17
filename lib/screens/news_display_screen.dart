@@ -33,7 +33,7 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Football News')),
+      appBar: AppBar(title: Text('Today News')),
       body: isloading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(

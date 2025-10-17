@@ -7,7 +7,7 @@ class NewsServices {
 static  Future fetchNews() async {
     try {
       final dio=await DioHelper.getInstance();
-      final response=await dio.get("$newsUrl/search");
+      final response=await dio.get("$newsUrl/newsv2_top_news");
       return response.data;
     } catch (e) {
       throw Exception('Failed to fetch news: $e');

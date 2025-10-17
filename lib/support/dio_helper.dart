@@ -9,8 +9,9 @@ class DioHelper {
     String token = (prefs.getString('token') ?? "");
     log.i(token);
     Dio dio = new Dio();
-    // dio.options.headers["x-rapidapi-key"] = 'fa1e134807msh7db3c185f348abbp166e6cjsn96c33a712066';
-    // dio.options.headers["x-rapidapi-host"] = "real-time-news-data.p.rapidapi.com";
+    // dio.options.headers["x-rapidapi-key"] = 'ab220e31d7mshc19e9dc99c34aa2p1d2ff2jsn5eb82b2bb858';
+    // dio.options.headers["x-rapidapi-host"] = "newsnow.p.rapidapi.com";
+    // dio.options.headers["Content-Type"] = "application/json";
     // dio.options.headers['']
     dio.interceptors.add(
       InterceptorsWrapper(
