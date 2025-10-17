@@ -25,7 +25,6 @@ class _StudentListScreenState extends State<StudentListScreen> {
 
     });
 
-
     log.i(students);
   }
 
