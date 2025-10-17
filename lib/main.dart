@@ -1,5 +1,6 @@
 import 'package:api_integreation_beginner_2025/screens/all_employees_screen.dart';
 import 'package:api_integreation_beginner_2025/screens/news_display_screen.dart';
+import 'package:api_integreation_beginner_2025/screens/student_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: NewsScreen(),
+      home: StudentListScreen(),
     );
   }
 }

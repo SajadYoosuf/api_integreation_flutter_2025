@@ -14,13 +14,15 @@ class StudentListScreen extends StatefulWidget {
 
 class _StudentListScreenState extends State<StudentListScreen> {
   bool _isLoading = true;
-  var students;
+ var students;
+
   Future<void> StudentDetails() async {
 
     final data = await StudentServices.StudentDetails();
 
     setState(() {
       students = data;
+
     });
 
 
@@ -31,6 +33,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
   void initState() {
     super.initState();
     _initLoad();
+
   }
 
 
@@ -49,7 +52,8 @@ class _StudentListScreenState extends State<StudentListScreen> {
         child: Container(
           child: Column(
             children: [
-              Text(students!['data']['studentList'][0]['user']['firstName']),
+              Text(students!['data']['studentList'][1]['Fullname']),
+              Text(students!['data']['studentList'][1]['Guardian']),
             ],
           ),
         ),
