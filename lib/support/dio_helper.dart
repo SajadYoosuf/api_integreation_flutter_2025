@@ -5,14 +5,9 @@ import 'logger.dart';
 
 class DioHelper {
   static Future<Dio> getInstance() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = (prefs.getString('token') ?? "");
-    log.i(token);
+
     Dio dio = new Dio();
-    // dio.options.headers["x-rapidapi-key"] = 'ab220e31d7mshc19e9dc99c34aa2p1d2ff2jsn5eb82b2bb858';
-    // dio.options.headers["x-rapidapi-host"] = "newsnow.p.rapidapi.com";
-    // dio.options.headers["Content-Type"] = "application/json";
-    // dio.options.headers['']
+dio.options.headers["Authorization"]="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTEwMzlmOTFmZmM2MmRkZGE2Mzk1MiIsImlhdCI6MTc2MDY5ODcwMSwiZXhwIjoxNzY4NDc0NzAxfQ.dSTG6XHiLU2t8siS16Riek70hgE3k68ScNqvdsBfDNM";
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {

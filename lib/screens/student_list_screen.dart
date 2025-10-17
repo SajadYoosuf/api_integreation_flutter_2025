@@ -51,8 +51,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
         child: Container(
           child: Column(
             children: [
-              Text(students!['data']['studentList'][1]['Fullname']),
-              Text(students!['data']['studentList'][1]['Guardian']),
+
             ],
           ),
         ),
