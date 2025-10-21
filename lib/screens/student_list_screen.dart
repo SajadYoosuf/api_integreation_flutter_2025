@@ -18,7 +18,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
 
   Future<void> StudentDetails() async {
 
-    final data = await StudentServices.StudentDetails();
+    final data = await LoginService.getAllStudents();
 
     setState(() {
       students = data;
