@@ -32,13 +32,16 @@ class _AllEmployeesScreenState extends State<AllEmployeesScreen> {
     log.i(employees);
   }
 
+  load_inital_data() {
+    Future.wait({getAllEmployees()});
+  }
+
   @override
   void initState() {
     super.initState();
     // Schedule a callback to run after the first frame is rendered.
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getAllEmployees();
-    });
+
+    load_inital_data();
   }
 
   @override
@@ -48,21 +51,22 @@ class _AllEmployeesScreenState extends State<AllEmployeesScreen> {
           ? Center(child: CircularProgressIndicator())
           : isError
           ? Center(
-            child: Container(
+              child: Container(
                 width: 30,
                 height: 50,
                 child: Text("employee loading getting error"),
               ),
-          )
+            )
           : Center(
-            child: Container(
-                child: Column(
-                  children: [
-                    Text(employees!['data']['employees'][0]['user']['firstName']),
-                  ],
-                ),
+              child: ListView.builder(
+                itemCount: employees!["data"]['employees'].length,
+                itemBuilder: (context, index) {
+                  return Text(
+                    employees!['data']['employees'][index]['user']['firstName'],
+                  );
+                },
               ),
-          ),
+            ),
     );
   }
 }

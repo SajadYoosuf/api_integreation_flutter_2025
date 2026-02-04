@@ -5,11 +5,9 @@ import 'logger.dart';
 
 class DioHelper {
   static Future<Dio> getInstance() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = (prefs.getString('token') ?? "");
-    log.i(token);
+
     Dio dio = new Dio();
-    dio.options.headers["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTEwMzlmOTFmZmM2MmRkZGE2Mzk1MiIsImlhdCI6MTc2MDM1MDYwNCwiZXhwIjoxNzY4MTI2NjA0fQ.-L310Ix95kGEzBezqSuDIpcTcLPoaSwVwvD8XtZaW-Y';
+    dio.options.headers["Authorization"] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5Mjc0ZTkwMWMxZjFhMWMxYWYyZTc2OSIsImlhdCI6MTc2OTE0OTc1MywiZXhwIjoxNzc2OTI1NzUzfQ.KVfT_fsBlT8ZgUrvu3JBcplXiuTbfU1SA-2GjUBBqBA';
     dio.options.headers["Accept"] = "application/json";
     // dio.options.headers['']
     dio.interceptors.add(
