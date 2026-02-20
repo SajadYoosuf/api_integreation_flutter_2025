@@ -1,45 +1,46 @@
-import 'package:api_integreation_beginner_2025/services/login_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class VyshanvLoginScreen extends StatefulWidget {
-  const VyshanvLoginScreen({super.key});
+import '../services/login_service.dart';
+
+class AswinLoginPage extends StatefulWidget {
+  const AswinLoginPage({super.key});
 
   @override
-  State<VyshanvLoginScreen> createState() => _VyshanvLoginScreenState();
+  State<AswinLoginPage> createState() => _AswinLoginPageState();
 }
 
-class _VyshanvLoginScreenState extends State<VyshanvLoginScreen> {
+class _AswinLoginPageState extends State<AswinLoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool isPasswordVisible = true;
-
+  final snakBar = SnackBar(
+    content: Text("Login Successful"),
+    action: SnackBarAction(label: "Undo", onPressed: () {}),
+  );
   void login() async{
     var req_data={
       "email": emailController.text,
       "password": passwordController.text
     };
-    var response= await  LoginService.login(req_data);
-    print(response);
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar( SnackBar(content: Text(response["message"])));
+    ScaffoldMessenger.of(context).showSnackBar(snakBar);
 
   }
   @override
-  Widget build(BuildContext context) {
-
-    print("state is rendering once again");
+  Widget build(BuildContext context)
+  {
     return Scaffold(
       body: Column(
         children: [
           SizedBox(height: 100),
-
           Center(child: Text("Login screen")),
           SizedBox(height: 20),
+
           Center(
             child: TextField(
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
+
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Email",
@@ -48,7 +49,7 @@ class _VyshanvLoginScreenState extends State<VyshanvLoginScreen> {
           ),
           Center(
             child: TextField(
-              obscuringCharacter: "*",
+              obscuringCharacter: ".",
               obscureText: isPasswordVisible,
               controller: passwordController,
               decoration: InputDecoration(
@@ -72,12 +73,8 @@ class _VyshanvLoginScreenState extends State<VyshanvLoginScreen> {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {
-       login();
-            },
-            child: Text("Login"),
-          ),
+          SizedBox(height: 20),
+          ElevatedButton(onPressed: () { login(); }, child: Text("Login")),
         ],
       ),
     );
